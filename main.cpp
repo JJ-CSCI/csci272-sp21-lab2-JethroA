@@ -10,38 +10,49 @@ enum class Compass {N, S, W, E};
 // Write your code here
 class GPS {
 private:
-  double Latitude;
-  Compass LatitudeDirection;
-  double Longitude;
-  Compass LongitudeDirection;
+  double latitude;
+  Compass latitudeDirection;
+  double longitude;
+  Compass longitudeDirection;
 
 public:
 
 GPS(double lat1,Compass a, double long1, Compass b){
-  if ((lat1>=0.0 && lat1 < 90.0) && (long1>=0.0 && long1<180.0))
 
-  Latitude = lat1;
-  LatitudeDirection = a;
-  Longitude = long1;
-  LongitudeDirection = b;
+  latitude = lat1;
+  latitudeDirection = a;
+  longitude = long1;
+  longitudeDirection = b;
+
+  if (lat1>=0.0 && lat1 < 90.0)
+  lat1 = compass::N;
+  else
+  latitude = 0;
+  latitudeDirection = 0; 
+
+  if (long1>=0.0 && long1<180.0)
+  long1 = Compass::W;
+  else
+  longitude = 0;
+  longitudeDirection = 0; 
 
 }
 
 
   double getLatitude(){
-    return Latitude;
+    return latitude;
   }
 
   Compass getLatitudeDirection(){
-    return LatitudeDirection;
+    return latitudeDirection;
   }
 
   double getLongitude(){
-    return Longitude;
+    return longitude;
   }
 
-  Compass getLatitudeDirection(){
-    return LongitudeDirection;
+  Compass LongitudeDirection(){
+    return longitudeDirection;
   }
 
 
